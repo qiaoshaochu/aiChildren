@@ -1,0 +1,9 @@
+backend/venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+miniapp/project.private.config.json
+node_modules/
+dist/
+build/
