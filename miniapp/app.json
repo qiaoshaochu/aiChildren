@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/dashboard/index",
+    "pages/teacher-input/index",
+    "pages/parent-record/index",
+    "pages/busybook-list/index",
+    "pages/busybook-upload/index",
+    "pages/checkin/index",
+    "pages/login/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "儿童成长小助手",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f5f5",
+    "backgroundTextStyle": "dark"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,144 @@
+<view class="container home">
+  <view class="hero card">
+    <view class="hero-decor hero-bubble-1"></view>
+    <view class="hero-decor hero-bubble-2"></view>
+    <view class="hero-content">
+      <view class="hero-left">
+        <view class="h1">你好，{{displayName}}</view>
+        <view class="muted sub">今天也陪孩子成长一点点</view>
+        <view class="hero-date caption">
+          {{todayText}} · {{weekday}} · 连续陪伴 {{streakDays}} 天
+        </view>
+      </view>
+      <view class="hero-right">
+        <view class="growth-card">
+          <view class="caption muted">今日成长指数</view>
+          <view class="growth-value">{{growthIndex}}</view>
+          <view class="caption muted growth-sub">根据最近一周记录估算</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="banner-wrapper">
+    <swiper class="banner-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" circular="{{true}}">
+      <block wx:for="{{banners}}" wx:key="id">
+        <swiper-item>
+          <view class="banner-card banner-{{index}}">
+            <view class="banner-inner">
+              <view class="banner-text">
+                <view class="banner-label pill-accent pill">{{item.tag}}</view>
+                <view class="banner-title">{{item.title}}</view>
+                <view class="banner-sub caption">{{item.desc}}</view>
+              </view>
+              <view class="banner-illustration"></view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class="section-title">今日成长卡片</view>
+
+  <view class="card main-task">
+    <view class="row">
+      <view>
+        <view class="card-title">今日任务</view>
+        <view class="caption muted">预计 10 分钟内完成 · 适合忙碌家庭</view>
+      </view>
+      <view class="pill">{{taskBadge}}</view>
+    </view>
+    <view class="gap12"></view>
+
+    <view wx:if="{{todayTasks.length}}">
+      <view wx:for="{{todayTasks}}" wx:key="id" class="task-row">
+        <view class="dot"></view>
+        <view class="task-text">{{item.title}}</view>
+      </view>
+    </view>
+    <view wx:else class="card-subtitle">今天还没有任务，稍后再来看看。</view>
+
+    <view class="divider"></view>
+    <view class="row actions">
+      <button class="secondary-btn" size="mini" bindtap="goParentRecord">先去记录</button>
+      <button class="primary-btn" size="mini" bindtap="goCheckin">立即打卡</button>
+    </view>
+  </view>
+
+  <view wx:if="{{todayClass}}" class="card">
+    <view class="row">
+      <view class="card-title">今日课堂摘要</view>
+      <view class="pill gray">{{todayClass.status}}</view>
+    </view>
+    <view class="gap12"></view>
+
+    <view class="kv">
+      <view class="k">主题</view>
+      <view class="v">{{todayClass.topic}}</view>
+    </view>
+    <view class="kv">
+      <view class="k">学了什么</view>
+      <view class="v">{{todayClass.learned}}</view>
+    </view>
+    <view wx:if="{{todayClass.note}}" class="kv">
+      <view class="k">备注</view>
+      <view class="v muted">{{todayClass.note}}</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="row">
+      <view class="card-title">本周成长一句话</view>
+      <view class="pill gray">AI</view>
+    </view>
+    <view class="gap12"></view>
+    <view class="quote">{{weekSummary}}</view>
+    <view class="muted tip">提示：坚持记录 3 天以上，会更“像 AI”。</view>
+  </view>
+
+  <view class="section-title">快捷入口</view>
+  <view class="nav-grid">
+    <view class="nav-item" bindtap="goDashboard">
+      <view class="nav-icon i1"></view>
+      <view class="nav-title">数据看板</view>
+      <view class="nav-sub">本周总结与区间</view>
+    </view>
+    <view class="nav-item" bindtap="goParentRecord">
+      <view class="nav-icon i2"></view>
+      <view class="nav-title">家长记录</view>
+      <view class="nav-sub">阅读 / 互动 / 任务</view>
+    </view>
+    <view class="nav-item" bindtap="goBusybook">
+      <view class="nav-icon i3"></view>
+      <view class="nav-title">Busybook</view>
+      <view class="nav-sub">上传与浏览</view>
+    </view>
+    <view class="nav-item" bindtap="goCheckin">
+      <view class="nav-icon i4"></view>
+      <view class="nav-title">打卡中心</view>
+      <view class="nav-sub">连续天数</view>
+    </view>
+  </view>
+
+  <view class="section-title">陪伴灵感</view>
+  <view class="inspo-grid">
+    <view class="inspo-card">
+      <view class="inspo-header">
+        <view class="inspo-tag pill-gray pill">亲子互动</view>
+      </view>
+      <view class="inspo-title">亲子互动灵感</view>
+      <view class="inspo-desc">用积木拼出一个小动物，一起给它取名字。</view>
+      <view class="inspo-meta caption">适合 3 岁+</view>
+    </view>
+    <view class="inspo-card">
+      <view class="inspo-header">
+        <view class="inspo-tag pill-accent pill">Busybook</view>
+      </view>
+      <view class="inspo-title">Busybook 推荐</view>
+      <view class="inspo-desc">动物换装主题，记录孩子最有创意的一页。</view>
+      <view class="inspo-meta caption">点赞 142</view>
+    </view>
+  </view>
+</view>
+

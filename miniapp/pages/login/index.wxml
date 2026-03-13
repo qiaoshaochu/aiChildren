@@ -1,0 +1,78 @@
+<view class="login-page">
+  <view class="login-hero">
+    <view class="brand-row">
+      <view class="brand-mark"></view>
+      <view>
+        <view class="brand-name">儿童成长小助手</view>
+        <view class="brand-tag caption">让每一次陪伴都被看见</view>
+      </view>
+    </view>
+    <view class="slogan h1">记录成长，让陪伴更轻松</view>
+    <view class="caption muted">支持多场景家庭，自动整理老师与家长的碎片记录。</view>
+  </view>
+
+  <view class="form-wrapper">
+    <view class="form-card">
+      <view class="h3">微信一键体验</view>
+      <view class="caption muted">临时测试入口，将为你创建体验账号“安安爸爸”。</view>
+
+      <view class="gap16"></view>
+
+      <button class="primary-btn main-btn" bindtap="onQuickLogin" loading="{{loading}}">
+        一键体验登录（安安爸爸）
+      </button>
+
+      <view class="divider-text">
+        <view class="line"></view>
+        <view class="caption muted">或使用账号密码登录</view>
+        <view class="line"></view>
+      </view>
+
+      <view class="h3">家长账号登录</view>
+      <view class="caption muted">第一次使用？直接设置一个昵称和密码即可。</view>
+
+      <view class="gap16"></view>
+
+      <view class="field">
+        <view class="field-label">用户名</view>
+        <input class="input" placeholder="例如：xinkai / 妈妈 / 爸爸" bindinput="onUsernameInput" value="{{username}}" />
+      </view>
+
+      <view class="field">
+        <view class="field-label">密码</view>
+        <input class="input" placeholder="请输入密码" password="true" bindinput="onPasswordInput" value="{{password}}" />
+      </view>
+
+      <view class="gap16"></view>
+
+      <button class="secondary-btn main-btn" bindtap="onLoginTap" loading="{{loading}}">
+        登录 / 注册并登录
+      </button>
+    </view>
+
+    <view class="login-benefits">
+      <view class="benefit-item">
+        <view class="dot"></view>
+        <view>
+          <view class="benefit-title">AI 整理成长记录</view>
+          <view class="caption muted">自动生成每周成长总结和下一步建议。</view>
+        </view>
+      </view>
+      <view class="benefit-item">
+        <view class="dot"></view>
+        <view>
+          <view class="benefit-title">每日陪伴任务</view>
+          <view class="caption muted">10 分钟就能完成的小任务，适合忙碌家庭。</view>
+        </view>
+      </view>
+      <view class="benefit-item">
+        <view class="dot"></view>
+        <view>
+          <view class="benefit-title">可视化成长看板</view>
+          <view class="caption muted">老师与家长的记录一屏看清。</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+

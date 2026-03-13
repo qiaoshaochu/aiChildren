@@ -1,0 +1,102 @@
+<view class="container dashboard">
+  <view class="card overview">
+    <view class="row">
+      <view>
+        <view class="h2">本周成长总览</view>
+        <view class="caption muted">一眼看清课堂与家庭陪伴情况</view>
+      </view>
+      <view class="pill-accent pill">近 7 天</view>
+    </view>
+
+    <view class="gap16"></view>
+
+    <view class="overview-grid">
+      <view class="overview-item">
+        <view class="label">记录天数</view>
+        <view class="value">{{stats.days}}</view>
+        <view class="caption muted">老师 + 家长</view>
+      </view>
+      <view class="overview-item">
+        <view class="label">亲子互动</view>
+        <view class="value">{{stats.interactionDays}}</view>
+        <view class="caption muted">有互动的天数</view>
+      </view>
+      <view class="overview-item">
+        <view class="label">阅读完成</view>
+        <view class="value">{{stats.readingDays}}</view>
+        <view class="caption muted">亲子阅读天数</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="row">
+      <view class="card-title">AI 周总结</view>
+      <view class="pill">AI</view>
+    </view>
+    <view class="gap12"></view>
+    <view class="summary-text">{{aiSummary}}</view>
+  </view>
+
+  <view class="card-flat section">
+    <view class="section-label">老师记录</view>
+    <block wx:if="{{teacherData.length}}">
+      <view wx:for="{{teacherData}}" wx:key="index" class="record-row">
+        <view class="record-date">{{item.date}}</view>
+        <view class="record-main">
+          <view class="record-title">{{item.topic}}</view>
+          <view class="caption muted">状态：{{item.status}} · 学了：{{item.learned}}</view>
+          <view wx:if="{{item.note}}" class="caption muted">备注：{{item.note}}</view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="empty">
+        <view class="empty-icon"></view>
+        <view class="empty-title">老师还没有录入数据</view>
+        <view class="empty-sub">可以先从家庭记录开始，AI 也会给出建议。</view>
+      </view>
+    </block>
+  </view>
+
+  <view class="card-flat section">
+    <view class="section-label">家长记录</view>
+    <block wx:if="{{parentData.length}}">
+      <view wx:for="{{parentData}}" wx:key="index" class="record-row">
+        <view class="record-date">{{item.date}}</view>
+        <view class="record-main">
+          <view class="caption">
+            任务：{{item.task_done ? '完成' : '未完成'}} · 阅读：{{item.reading ? '是' : '否'}} · 互动：{{item.interaction ? '是' : '否'}}
+          </view>
+          <view wx:if="{{item.note}}" class="caption muted">备注：{{item.note}}</view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="empty">
+        <view class="empty-icon"></view>
+        <view class="empty-title">还没有家庭记录</view>
+        <view class="empty-sub">每天花 1 分钟记录，周报会更聪明。</view>
+      </view>
+    </block>
+  </view>
+
+  <view class="card-flat peer">
+    <view class="section-label">同龄区间参考</view>
+    <view class="peer-row">
+      <view class="peer-item">
+        <view class="label">表达互动</view>
+        <view class="badge">{{peerReference.expression}}</view>
+      </view>
+      <view class="peer-item">
+        <view class="label">亲子阅读</view>
+        <view class="badge">{{peerReference.reading}}</view>
+      </view>
+      <view class="peer-item">
+        <view class="label">任务坚持</view>
+        <view class="badge">{{peerReference.task}}</view>
+      </view>
+    </view>
+    <view class="caption muted tip">这是温和的区间提示，不是“全国排名”，仅做趋势参考。</view>
+  </view>
+</view>

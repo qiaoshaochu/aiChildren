@@ -1,0 +1,91 @@
+.login-page {
+  padding: 72rpx 32rpx 40rpx;
+}
+
+.login-hero {
+  padding: 32rpx 24rpx 40rpx;
+  border-radius: 32rpx;
+  background: radial-gradient(120% 140% at 0% 0%, #ffe4dd, #f3e8ff);
+  box-shadow: 0 20rpx 40rpx rgba(248, 113, 113, 0.25);
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.brand-mark {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 18rpx;
+  margin-right: 16rpx;
+  background: linear-gradient(135deg, #ff8a7a, #ffb199);
+  box-shadow: 0 10rpx 25rpx rgba(255, 137, 122, 0.55);
+}
+
+.brand-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.brand-tag {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.slogan {
+  margin-bottom: 8rpx;
+  color: #ffffff;
+}
+
+.form-wrapper {
+  margin-top: 32rpx;
+}
+
+.main-btn {
+  width: 100%;
+}
+
+.divider-text {
+  margin: 28rpx 0 18rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider-text .line {
+  flex: 1;
+  height: 1rpx;
+  background: rgba(148, 163, 184, 0.5);
+}
+
+.divider-text .caption {
+  padding: 0 16rpx;
+}
+
+.login-benefits {
+  margin-top: 28rpx;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16rpx;
+}
+
+.benefit-item .dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(135deg, #ff8a7a, #ffb199);
+  margin-top: 10rpx;
+  margin-right: 14rpx;
+}
+
+.benefit-title {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #182230;
+  margin-bottom: 4rpx;
+}
