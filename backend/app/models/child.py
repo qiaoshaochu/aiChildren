@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from ...models import db
+from models import db
 
 
 class Child(db.Model):

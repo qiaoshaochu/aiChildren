@@ -1,10 +1,13 @@
-from flask import Flask, request, session
+from flask import Flask, request, session, g
 from flask_cors import CORS
 from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
 
 from .config import init_config
 from .models import db, init_db, User
 from .controllers import register_routes
+from .controllers.children import bp as children_bp
+from .controllers.records import bp as records_bp
+from .controllers.analyses import bp as analyses_bp
 
 
 def create_app():
@@ -41,8 +44,17 @@ def create_app():
             return None
         return UserModel.query.get(uid)
 
-    # 注册所有路由
+    @app.before_request
+    def inject_current_user():
+        g.current_user = current_user()
+
+    # 原有路由
     register_routes(app, current_user, issue_token)
+
+    # REST API Blueprints
+    app.register_blueprint(children_bp)
+    app.register_blueprint(records_bp)
+    app.register_blueprint(analyses_bp)
 
     return app
 

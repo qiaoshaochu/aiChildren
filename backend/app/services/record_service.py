@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 
 from ..models import db
-from ..models.record import TeacherRecord, ParentRecord, Checkin
+from ..models.record import TeacherRecord, ParentRecord, Checkin, Record
 
 
 def create_teacher_record(user_id, payload):
@@ -99,10 +99,55 @@ def do_checkin(user_id):
     return record
 
 
+def create_record(payload):
+    """MVP Record 模型：创建一条记录."""
+    child_id = payload.get("child_id")
+    record_date_str = payload.get("record_date")
+    category = payload.get("category", "").strip()
+    value = payload.get("value", "").strip()
+    notes = payload.get("notes", "")
+
+    if not child_id:
+        return None, "child_id 必填"
+    if not category:
+        return None, "category 必填"
+    if not value:
+        return None, "value 必填"
+
+    try:
+        record_date = (
+            datetime.fromisoformat(record_date_str).date()
+            if record_date_str
+            else datetime.utcnow().date()
+        )
+    except (ValueError, TypeError):
+        return None, "record_date 格式不正确"
+
+    record = Record(
+        child_id=int(child_id),
+        record_date=record_date,
+        category=category[:20],
+        value=value[:50],
+        notes=notes or None,
+    )
+    db.session.add(record)
+    db.session.commit()
+    return record, None
+
+
+def list_records_by_child(child_id):
+    """MVP Record 模型：按 child_id 列表."""
+    return Record.query.filter_by(child_id=int(child_id)).order_by(
+        Record.record_date.desc(), Record.created_at.desc()
+    ).all()
+
+
 __all__ = [
     "create_teacher_record",
     "create_parent_record",
     "get_checkin_stats",
     "do_checkin",
+    "create_record",
+    "list_records_by_child",
 ]
 
