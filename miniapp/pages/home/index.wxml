@@ -5,23 +5,23 @@
   </view>
 
   <block wx:if="{{!defaultChild}}">
-    <view class="empty-block">
+    <view class="card empty">
       <view class="empty-icon">👶</view>
       <text class="empty-title">还没有添加孩子</text>
       <text class="empty-desc">添加孩子后，可以记录每日成长、查看成长报告</text>
-      <navigator class="btn-primary" url="/pages/child-manage/index">添加孩子</navigator>
+      <navigator class="btn btn-primary" url="/pages/child-manage/index">添加孩子</navigator>
     </view>
   </block>
 
   <block wx:else>
-    <view class="card child-card">
+    <view class="card section child-card">
       <view class="card-label">当前孩子</view>
       <view class="child-name">{{defaultChild.name}}</view>
       <view class="child-meta" wx:if="{{defaultChild.birth_date}}">{{defaultChild.birth_date}}</view>
       <navigator class="card-link" url="/pages/child-manage/index">管理孩子</navigator>
     </view>
 
-    <view class="actions">
+    <view class="section actions">
       <navigator class="action-btn primary" url="/pages/record-input/index?child_id={{defaultChild.id}}">
         <text class="action-icon">✏️</text>
         <text class="action-text">新增成长记录</text>

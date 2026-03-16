@@ -1,23 +1,4 @@
-.page {
-  min-height: 100vh;
-  background: #f5f5f5;
-  padding: 24rpx;
-  box-sizing: border-box;
-}
-
-.card {
-  background: #fff;
-  border-radius: 20rpx;
-  padding: 24rpx;
-  margin-bottom: 20rpx;
-  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.04);
-}
-
-.card-title {
-  font-size: 30rpx;
-  font-weight: 600;
-  margin-bottom: 16rpx;
-}
+@import "../../styles/base.wxss";
 
 .timeline-item {
   flex-direction: row;
@@ -29,7 +10,7 @@
   width: 14rpx;
   height: 14rpx;
   border-radius: 50%;
-  background: #1989fa;
+  background: #4A90E2;
   margin-top: 8rpx;
   margin-right: 16rpx;
 }
@@ -37,13 +18,13 @@
 .timeline-content .time {
   display: block;
   font-size: 24rpx;
-  color: #999;
+  color: #999999;
 }
 
 .timeline-content .text {
   display: block;
   font-size: 26rpx;
-  color: #333;
+  color: #1A1A1A;
 }
 
 .record {
@@ -57,24 +38,17 @@
 
 .date {
   font-size: 24rpx;
-  color: #999;
+  color: #999999;
   margin-right: 12rpx;
 }
 
 .cat {
   font-size: 24rpx;
-  color: #1989fa;
+  color: #4A90E2;
   margin-right: 8rpx;
 }
 
 .val {
   font-size: 26rpx;
-}
-
-.btn {
-  margin-top: 8rpx;
-  background: #1989fa;
-  color: #fff;
-  border-radius: 16rpx;
 }
 

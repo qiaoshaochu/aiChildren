@@ -1,19 +1,19 @@
 <view class="page">
-  <view class="card">
+  <view class="card section ai-card">
     <view class="card-title">BusyBook 模板</view>
     <view class="template">
       <text class="template-text">形状认知 / 颜色分类 / 动物换装...</text>
     </view>
   </view>
 
-  <view class="card">
+  <view class="card section">
     <view class="card-title">上传作品</view>
-    <button class="btn" bindtap="onUploadTap">选择图片并上传（示意）</button>
+    <button class="btn btn-primary" bindtap="onUploadTap">选择图片并上传（示意）</button>
   </view>
 
-  <view class="card">
+  <view class="card section list">
     <view class="card-title">作品列表</view>
-    <view wx:for="{{works}}" wx:key="id" class="work">
+    <view wx:for="{{works}}" wx:key="id" class="work list-item">
       <view class="thumb"></view>
       <view class="work-main">
         <text class="work-title">{{item.title}}</text>

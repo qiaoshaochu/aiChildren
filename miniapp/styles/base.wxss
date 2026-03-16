@@ -1,0 +1,274 @@
+/* === Design Tokens === */
+/* Colors */
+.color-primary { color: #4A90E2; }
+.color-task { color: #FF9500; }
+.color-accent { color: #AF52DE; }
+.color-success { color: #34C759; }
+.color-text-primary { color: #1A1A1A; }
+.color-text-secondary { color: #666666; }
+.color-text-placeholder { color: #999999; }
+.color-divider { color: #EDEDED; }
+
+/* Background helpers */
+.bg-page { background-color: #F8F9FA; }
+.bg-card { background-color: #FFFFFF; }
+.bg-ai { background-color: #F0F7FF; }
+
+/* Layout */
+.page {
+  min-height: 100vh;
+  background-color: #F8F9FA;
+  padding: 24rpx 32rpx;
+  box-sizing: border-box;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+/* Typography */
+.page-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #1A1A1A;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #1A1A1A;
+  margin-bottom: 8px;
+}
+
+.text-body {
+  font-size: 16px;
+  color: #1A1A1A;
+}
+
+.text-secondary {
+  font-size: 14px;
+  color: #666666;
+}
+
+.text-placeholder {
+  font-size: 14px;
+  color: #999999;
+}
+
+.btn-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* === Card === */
+.card {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #1A1A1A;
+}
+
+.card-subtitle {
+  font-size: 14px;
+  color: #666666;
+}
+
+/* === Button === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: #4A90E2;
+  color: #FFFFFF;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #4A90E2;
+  border: 1px solid #4A90E2;
+}
+
+/* === Tag === */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.tag-ai {
+  background-color: #F0F7FF;
+  color: #4A90E2;
+}
+
+.tag-task {
+  background-color: rgba(255,149,0,0.08);
+  color: #FF9500;
+}
+
+.tag-success {
+  background-color: rgba(52,199,89,0.08);
+  color: #34C759;
+}
+
+/* === Input === */
+.input {
+  width: 100%;
+  height: 48px;
+  box-sizing: border-box;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: 1px solid #EDEDED;
+  font-size: 16px;
+  color: #1A1A1A;
+  background-color: #FFFFFF;
+}
+
+.input::placeholder {
+  color: #999999;
+}
+
+/* === List === */
+.list {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 12px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #EDEDED;
+}
+
+.list-item:last-child {
+  border-bottom-width: 0;
+}
+
+.list-item-title {
+  font-size: 16px;
+  color: #1A1A1A;
+}
+
+.list-item-sub {
+  font-size: 14px;
+  color: #666666;
+}
+
+/* === AI Summary Card === */
+.ai-card {
+  background-color: #F0F7FF;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.ai-card-title {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1A1A1A;
+  margin-bottom: 8px;
+}
+
+.ai-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 8px;
+  background: linear-gradient(135deg, #4A90E2, #AF52DE);
+}
+
+.ai-card-text {
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.5;
+}
+
+/* === Task Card === */
+.task-card {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-bottom: 12px;
+}
+
+.task-title {
+  font-size: 16px;
+  color: #1A1A1A;
+  margin-bottom: 4px;
+}
+
+.task-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-status-label {
+  font-size: 14px;
+  color: #666666;
+}
+
+.task-status-badge {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.task-done {
+  background-color: rgba(52,199,89,0.08);
+  color: #34C759;
+}
+
+.task-pending {
+  background-color: rgba(255,149,0,0.08);
+  color: #FF9500;
+}
+
+/* === Empty State === */
+.empty {
+  text-align: center;
+  padding: 48px 16px;
+}
+
+.empty-title {
+  font-size: 16px;
+  color: #1A1A1A;
+  margin-bottom: 8px;
+}
+
+.empty-desc {
+  font-size: 14px;
+  color: #999999;
+}
+

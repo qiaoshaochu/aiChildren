@@ -1,33 +1,8 @@
-.page {
-  min-height: 100vh;
-  background: #f5f5f5;
-  padding: 24rpx;
-  box-sizing: border-box;
-}
-
-.card {
-  background: #fff;
-  border-radius: 20rpx;
-  padding: 24rpx;
-  margin-bottom: 20rpx;
-  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.04);
-}
-
-.card-title {
-  font-size: 30rpx;
-  font-weight: 600;
-  margin-bottom: 16rpx;
-}
+@import "../../styles/base.wxss";
 
 .template-text {
   font-size: 26rpx;
-  color: #666;
-}
-
-.btn {
-  background: #1989fa;
-  color: #fff;
-  border-radius: 16rpx;
+  color: #666666;
 }
 
 .work {
@@ -51,12 +26,12 @@
 
 .work-title {
   font-size: 28rpx;
-  color: #333;
+  color: #1A1A1A;
 }
 
 .work-meta {
   display: block;
   font-size: 24rpx;
-  color: #999;
+  color: #999999;
 }
 
