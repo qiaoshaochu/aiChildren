@@ -1,22 +1,14 @@
-from flask import Blueprint, jsonify, request, g
+from flask import Blueprint, jsonify, request
 
 from ..services import record_service
-from ..utils.errors import unauthorized, bad_request
+from ..utils.errors import bad_request
 
 bp = Blueprint("records", __name__, url_prefix="/api/records")
 
 
-def _require_user():
-    user = getattr(g, "current_user", None)
-    if not user:
-        return None
-    return user
-
-
 @bp.route("", methods=["POST"])
 def create_record():
-    if _require_user() is None:
-        return unauthorized()
+    # MVP 阶段暂不鉴权
     data = request.get_json() or {}
     record, err = record_service.create_record(data)
     if err:
@@ -26,16 +18,11 @@ def create_record():
 
 @bp.route("", methods=["GET"])
 def list_records():
-    if _require_user() is None:
-        return unauthorized()
-    child_id = request.args.get("child_id")
-    if not child_id:
-        return bad_request("缺少 child_id")
-    try:
-        child_id = int(child_id)
-    except ValueError:
-        return bad_request("child_id 必须为数字")
-    records = record_service.list_records_by_child(child_id)
+    # MVP 阶段暂不鉴权
+    child_id_raw = request.args.get("child_id")
+    records, err = record_service.list_records_by_child(child_id_raw)
+    if err:
+        return bad_request(err)
     return jsonify([_serialize_record(r) for r in records])
 
 

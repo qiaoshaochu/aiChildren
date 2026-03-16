@@ -1,27 +1,24 @@
-from datetime import datetime
-
 from ..models import db
 from ..models.child import Child
+from ..utils.validation import parse_date
 
 
 def create_child(payload):
-    name = payload.get("name", "").strip()
+    name = (payload.get("name") or "").strip()
     if not name:
         return None, "姓名为必填"
-    birth_date = payload.get("birth_date")
-    gender = payload.get("gender", "")
-    avatar_url = payload.get("avatar_url", "")
-
-    try:
-        bd = datetime.fromisoformat(birth_date).date() if birth_date else None
-    except (ValueError, TypeError):
-        bd = None
+    birth_date_raw = payload.get("birth_date")
+    bd, err = parse_date(birth_date_raw, default_today=False)
+    if err:
+        return None, err
+    gender = (payload.get("gender") or "")[:10]
+    avatar_url = (payload.get("avatar_url") or "")[:255]
 
     child = Child(
         name=name,
         birth_date=bd,
-        gender=gender[:10] if gender else None,
-        avatar_url=avatar_url[:255] if avatar_url else None,
+        gender=gender if gender else None,
+        avatar_url=avatar_url if avatar_url else None,
     )
     db.session.add(child)
     db.session.commit()

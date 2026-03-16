@@ -1,44 +1,42 @@
-from datetime import datetime
-
 from ..models import db
 from ..models.analysis import Analysis
+from ..utils.validation import parse_date, parse_child_id
 
 
 def create_analysis(payload):
-    child_id = payload.get("child_id")
-    analysis_date_str = payload.get("analysis_date")
-    trend = payload.get("trend", "")
-    insights = payload.get("insights", "")
-    recommendations = payload.get("recommendations", "")
+    child_id_raw = payload.get("child_id")
+    cid, err = parse_child_id(child_id_raw)
+    if err:
+        return None, err
+    analysis_date_raw = payload.get("analysis_date")
+    analysis_date, err = parse_date(analysis_date_raw, default_today=True)
+    if err:
+        return None, "analysis_date " + err
 
-    if not child_id:
-        return None, "child_id 必填"
-
-    try:
-        analysis_date = (
-            datetime.fromisoformat(analysis_date_str).date()
-            if analysis_date_str
-            else datetime.utcnow().date()
-        )
-    except (ValueError, TypeError):
-        return None, "analysis_date 格式不正确"
+    trend = (payload.get("trend") or "")[:50] or None
+    insights = (payload.get("insights") or "").strip() or None
+    recommendations = (payload.get("recommendations") or "").strip() or None
 
     analysis = Analysis(
-        child_id=int(child_id),
+        child_id=cid,
         analysis_date=analysis_date,
-        trend=trend[:50] if trend else None,
-        insights=insights or None,
-        recommendations=recommendations or None,
+        trend=trend,
+        insights=insights,
+        recommendations=recommendations,
     )
     db.session.add(analysis)
     db.session.commit()
     return analysis, None
 
 
-def list_analyses_by_child(child_id):
-    return Analysis.query.filter_by(child_id=int(child_id)).order_by(
+def list_analyses_by_child(child_id_raw):
+    cid, err = parse_child_id(child_id_raw)
+    if err:
+        return None, err
+    analyses = Analysis.query.filter_by(child_id=cid).order_by(
         Analysis.analysis_date.desc(), Analysis.created_at.desc()
     ).all()
+    return analyses, None
 
 
 __all__ = ["create_analysis", "list_analyses_by_child"]

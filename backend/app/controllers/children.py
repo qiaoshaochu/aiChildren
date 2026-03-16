@@ -1,22 +1,14 @@
-from flask import Blueprint, jsonify, request, g
+from flask import Blueprint, jsonify, request
 
 from ..services import child_service
-from ..utils.errors import unauthorized, bad_request
+from ..utils.errors import bad_request
 
 bp = Blueprint("children", __name__, url_prefix="/api/children")
 
 
-def _require_user():
-    user = getattr(g, "current_user", None)
-    if not user:
-        return None
-    return user
-
-
 @bp.route("", methods=["POST"])
 def create_child():
-    if _require_user() is None:
-        return unauthorized()
+    # MVP 阶段暂不鉴权
     data = request.get_json() or {}
     child, err = child_service.create_child(data)
     if err:
@@ -26,8 +18,7 @@ def create_child():
 
 @bp.route("/<int:child_id>", methods=["GET"])
 def get_child(child_id):
-    if _require_user() is None:
-        return unauthorized()
+    # MVP 阶段暂不鉴权
     child = child_service.get_child_by_id(child_id)
     if not child:
         return jsonify({"error": "孩子不存在"}), 404
