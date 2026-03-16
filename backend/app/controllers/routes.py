@@ -2,14 +2,8 @@ from datetime import datetime, timedelta
 
 from flask import jsonify, request, session
 
-from ..models import (
-    db,
-    User,
-    TeacherRecord,
-    ParentRecord,
-    BusybookItem,
-    Checkin,
-)
+from ..models import db, User, TeacherRecord, ParentRecord, BusybookItem
+from .record import register_record_routes
 
 
 def register_routes(app, current_user, issue_token):
@@ -59,6 +53,9 @@ def register_routes(app, current_user, issue_token):
     def logout():
         session.clear()
         return jsonify({"message": "已登出"})
+
+    # 注册记录相关路由（老师/家长记录 + 打卡）
+    register_record_routes(app, current_user)
 
     # -------- 首页数据 --------
     @app.get("/api/home")
@@ -204,78 +201,6 @@ def register_routes(app, current_user, issue_token):
             }
         )
 
-    # -------- 老师录入 --------
-    @app.post("/api/teacher-records")
-    def create_teacher_record():
-        user = current_user()
-        if not user:
-            return jsonify({"error": "未登录"}), 401
-
-        data = request.json or {}
-        date_str = data.get("date")
-        topic = data.get("topic", "")
-        status = data.get("status", "正常")
-        learned = data.get("learned", "")
-        note = data.get("note", "")
-
-        try:
-            date = (
-                datetime.fromisoformat(date_str).date()
-                if date_str
-                else datetime.utcnow().date()
-            )
-        except ValueError:
-            return jsonify({"error": "日期格式不正确"}), 400
-
-        record = TeacherRecord(
-            user_id=user.id,
-            date=date,
-            topic=topic,
-            status=status,
-            learned=learned,
-            note=note,
-        )
-        db.session.add(record)
-        db.session.commit()
-
-        return jsonify({"message": "老师数据已记录"})
-
-    # -------- 家长记录 --------
-    @app.post("/api/parent-records")
-    def create_parent_record():
-        user = current_user()
-        if not user:
-            return jsonify({"error": "未登录"}), 401
-
-        data = request.json or {}
-        date_str = data.get("date")
-        task_done = bool(data.get("task_done"))
-        reading = bool(data.get("reading"))
-        interaction = bool(data.get("interaction"))
-        note = data.get("note", "")
-
-        try:
-            date = (
-                datetime.fromisoformat(date_str).date()
-                if date_str
-                else datetime.utcnow().date()
-            )
-        except ValueError:
-            return jsonify({"error": "日期格式不正确"}), 400
-
-        record = ParentRecord(
-            user_id=user.id,
-            date=date,
-            task_done=task_done,
-            reading=reading,
-            interaction=interaction,
-            note=note,
-        )
-        db.session.add(record)
-        db.session.commit()
-
-        return jsonify({"message": "家长记录已保存"})
-
     # -------- Busybook --------
     @app.get("/api/busybook")
     def list_busybook():
@@ -333,57 +258,4 @@ def register_routes(app, current_user, issue_token):
         item.likes += 1
         db.session.commit()
         return jsonify({"message": "已点赞", "likes": item.likes})
-
-    # -------- 打卡 --------
-    @app.get("/api/checkin")
-    def get_checkin():
-        user = current_user()
-        if not user:
-            return jsonify({"error": "未登录"}), 401
-
-        today = datetime.utcnow().date()
-        today_record = Checkin.query.filter_by(user_id=user.id, date=today).first()
-
-        streak = 0
-        d = today
-        while True:
-            r = Checkin.query.filter_by(user_id=user.id, date=d).first()
-            if r and r.done:
-                streak += 1
-                d -= timedelta(days=1)
-            else:
-                break
-
-        month_start = today.replace(day=1)
-        month_records = Checkin.query.filter(
-            Checkin.user_id == user.id,
-            Checkin.date >= month_start,
-            Checkin.date <= today,
-            Checkin.done.is_(True),
-        ).count()
-
-        return jsonify(
-            {
-                "todayDone": bool(today_record and today_record.done),
-                "streak": streak,
-                "monthCount": month_records,
-            }
-        )
-
-    @app.post("/api/checkin")
-    def do_checkin():
-        user = current_user()
-        if not user:
-            return jsonify({"error": "未登录"}), 401
-
-        today = datetime.utcnow().date()
-        record = Checkin.query.filter_by(user_id=user.id, date=today).first()
-        if not record:
-            record = Checkin(user_id=user.id, date=today, done=True)
-            db.session.add(record)
-        else:
-            record.done = True
-        db.session.commit()
-
-        return jsonify({"message": "已打卡"})
 

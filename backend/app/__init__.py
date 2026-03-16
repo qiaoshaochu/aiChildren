@@ -1,21 +1,15 @@
-from datetime import datetime, timedelta
-import os
-
 from flask import Flask, request, session
 from flask_cors import CORS
 from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
 
+from .config import init_config
 from .models import db, init_db, User
 from .controllers import register_routes
 
 
 def create_app():
     app = Flask(__name__)
-    app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev-secret-key")
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv(
-        "DATABASE_URL", "sqlite:///children_growth.db"
-    )
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    init_config(app)
 
     CORS(app, supports_credentials=True)
     init_db(app)

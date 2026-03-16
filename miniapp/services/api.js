@@ -1,8 +1,9 @@
-const app = getApp ? getApp() : null
+const app = typeof getApp === 'function' ? getApp() : null
+const { API_BASE } = require('../config/api')
 
 function getBase() {
   if (app && app.globalData && app.globalData.apiBase) return app.globalData.apiBase
-  return 'http://127.0.0.1:5000'
+  return API_BASE
 }
 
 function getAuthHeader() {
