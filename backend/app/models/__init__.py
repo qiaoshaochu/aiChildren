@@ -7,6 +7,9 @@ from ...models import (  # noqa: F401
     BusybookItem,
     Checkin,
 )
+from .child import Child  # noqa: F401
+from .record import Record  # noqa: F401
+from .analysis import Analysis  # noqa: F401
 
 __all__ = [
     "db",
@@ -16,5 +19,8 @@ __all__ = [
     "ParentRecord",
     "BusybookItem",
     "Checkin",
+    "Child",
+    "Record",
+    "Analysis",
 ]
 
