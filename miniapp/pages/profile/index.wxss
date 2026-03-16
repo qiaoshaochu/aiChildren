@@ -13,6 +13,6 @@
 
 .arrow {
   font-size: 28rpx;
-  color: #ccc;
+  color: #999999;
 }
 
