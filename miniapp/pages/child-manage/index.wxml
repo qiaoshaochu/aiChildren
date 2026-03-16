@@ -1,17 +1,20 @@
 <view class="page">
-  <view class="form">
-    <view class="field">
-      <text class="label">姓名</text>
-      <input class="input" placeholder="必填" value="{{name}}" bindinput="onNameInput" />
+  <view class="card">
+    <view class="card-title">添加孩子</view>
+    <view class="form">
+      <view class="field">
+        <text class="label">姓名</text>
+        <input class="input" placeholder="必填" value="{{name}}" bindinput="onNameInput" />
+      </view>
+      <view class="field">
+        <text class="label">出生日期</text>
+        <input class="input" placeholder="选填，如 2020-05-01" value="{{birth_date}}" bindinput="onBirthInput" />
+      </view>
+      <view class="field">
+        <text class="label">性别</text>
+        <input class="input" placeholder="选填" value="{{gender}}" bindinput="onGenderInput" />
+      </view>
+      <button class="btn" bindtap="onSubmit" loading="{{loading}}">保存</button>
     </view>
-    <view class="field">
-      <text class="label">出生日期</text>
-      <input class="input" placeholder="选填，如 2020-05-01" value="{{birth_date}}" bindinput="onBirthInput" />
-    </view>
-    <view class="field">
-      <text class="label">性别</text>
-      <input class="input" placeholder="选填" value="{{gender}}" bindinput="onGenderInput" />
-    </view>
-    <button class="btn" bindtap="onSubmit" loading="{{loading}}">保存</button>
   </view>
 </view>

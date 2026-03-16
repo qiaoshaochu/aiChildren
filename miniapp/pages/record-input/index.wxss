@@ -1,6 +1,106 @@
-.page { padding: 24rpx; }
-.form { background: #fff; border-radius: 16rpx; padding: 24rpx; box-shadow: 0 4rpx 12rpx rgba(0,0,0,.06); }
-.field { margin-bottom: 24rpx; }
-.label { display: block; font-size: 26rpx; color: #666; margin-bottom: 8rpx; }
-.input { border: 1rpx solid #eee; border-radius: 12rpx; padding: 20rpx; font-size: 28rpx; }
-.btn { margin-top: 32rpx; background: #1989fa; color: #fff; border-radius: 12rpx; }
+.page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 32rpx 24rpx 48rpx;
+  box-sizing: border-box;
+}
+
+.card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 32rpx 28rpx 40rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.06);
+  max-width: 680rpx;
+  margin: 0 auto;
+}
+
+.card-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 24rpx;
+}
+
+.child-id-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-bottom: 24rpx;
+  padding: 16rpx 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  border: 1rpx solid #eee;
+}
+
+.child-id-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.child-id-input {
+  width: 120rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  padding: 0 16rpx;
+  font-size: 26rpx;
+  color: #666;
+  background: #fff;
+  border: 1rpx solid #e5e5e5;
+  border-radius: 8rpx;
+  flex-shrink: 0;
+}
+
+.child-id-hint {
+  font-size: 22rpx;
+  color: #999;
+  width: 100%;
+}
+
+.form {
+  width: 100%;
+}
+
+.field {
+  margin-bottom: 28rpx;
+}
+
+.label {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 12rpx;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #e5e5e5;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  color: #333;
+  background: #fafafa;
+}
+
+.input::placeholder {
+  color: #bbb;
+}
+
+.btn {
+  margin-top: 40rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #1989fa;
+  color: #fff;
+  border-radius: 16rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+.btn::after {
+  border: none;
+}

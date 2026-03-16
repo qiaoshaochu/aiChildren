@@ -1,0 +1,80 @@
+.page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.04);
+}
+
+.card-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 16rpx;
+}
+
+.timeline-item {
+  flex-direction: row;
+  display: flex;
+  margin-bottom: 12rpx;
+}
+
+.dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: #1989fa;
+  margin-top: 8rpx;
+  margin-right: 16rpx;
+}
+
+.timeline-content .time {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.timeline-content .text {
+  display: block;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.record {
+  padding: 12rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.record:last-child {
+  border-bottom: none;
+}
+
+.date {
+  font-size: 24rpx;
+  color: #999;
+  margin-right: 12rpx;
+}
+
+.cat {
+  font-size: 24rpx;
+  color: #1989fa;
+  margin-right: 8rpx;
+}
+
+.val {
+  font-size: 26rpx;
+}
+
+.btn {
+  margin-top: 8rpx;
+  background: #1989fa;
+  color: #fff;
+  border-radius: 16rpx;
+}
+

@@ -1,25 +1,29 @@
 <view class="page">
-  <view class="form">
-    <view class="field">
-      <text class="label">孩子 ID</text>
-      <input class="input" type="number" placeholder="必填，如 1" value="{{child_id}}" bindinput="onChildIdInput" />
+  <view class="card">
+    <view class="card-title">新增成长记录</view>
+    <view class="child-id-row">
+      <text class="child-id-label">孩子 ID</text>
+      <input class="child-id-input" type="number" placeholder="必填" value="{{child_id}}" bindinput="onChildIdInput" />
+      <text class="child-id-hint" wx:if="{{child_id}}">从成长报告进入时已自动带入</text>
     </view>
-    <view class="field">
-      <text class="label">记录日期</text>
-      <input class="input" placeholder="选填，如 2025-03-10" value="{{record_date}}" bindinput="onDateInput" />
+    <view class="form">
+      <view class="field">
+        <text class="label">记录日期</text>
+        <input class="input" placeholder="选填，如 2025-03-10" value="{{record_date}}" bindinput="onDateInput" />
+      </view>
+      <view class="field">
+        <text class="label">类别</text>
+        <input class="input" placeholder="必填，如 reading" value="{{category}}" bindinput="onCategoryInput" />
+      </view>
+      <view class="field">
+        <text class="label">内容</text>
+        <input class="input" placeholder="必填" value="{{value}}" bindinput="onValueInput" />
+      </view>
+      <view class="field">
+        <text class="label">备注</text>
+        <input class="input" placeholder="选填" value="{{notes}}" bindinput="onNotesInput" />
+      </view>
+      <button class="btn" bindtap="onSubmit" loading="{{loading}}">保存</button>
     </view>
-    <view class="field">
-      <text class="label">类别</text>
-      <input class="input" placeholder="必填，如 reading" value="{{category}}" bindinput="onCategoryInput" />
-    </view>
-    <view class="field">
-      <text class="label">内容</text>
-      <input class="input" placeholder="必填" value="{{value}}" bindinput="onValueInput" />
-    </view>
-    <view class="field">
-      <text class="label">备注</text>
-      <input class="input" placeholder="选填" value="{{notes}}" bindinput="onNotesInput" />
-    </view>
-    <button class="btn" bindtap="onSubmit" loading="{{loading}}">保存</button>
   </view>
 </view>
