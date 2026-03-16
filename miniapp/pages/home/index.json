@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "今日成长"
+  "navigationBarTitleText": "首页",
+  "enablePullDownRefresh": true
 }

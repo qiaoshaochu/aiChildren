@@ -1,0 +1,6 @@
+.page { padding: 24rpx; }
+.form { background: #fff; border-radius: 16rpx; padding: 24rpx; box-shadow: 0 4rpx 12rpx rgba(0,0,0,.06); }
+.field { margin-bottom: 24rpx; }
+.label { display: block; font-size: 26rpx; color: #666; margin-bottom: 8rpx; }
+.input { border: 1rpx solid #eee; border-radius: 12rpx; padding: 20rpx; font-size: 28rpx; }
+.btn { margin-top: 32rpx; background: #1989fa; color: #fff; border-radius: 12rpx; }

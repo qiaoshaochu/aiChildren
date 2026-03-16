@@ -1,13 +1,9 @@
 {
   "pages": [
     "pages/home/index",
-    "pages/dashboard/index",
-    "pages/teacher-input/index",
-    "pages/parent-record/index",
-    "pages/busybook-list/index",
-    "pages/busybook-upload/index",
-    "pages/checkin/index",
-    "pages/login/index"
+    "pages/child-manage/index",
+    "pages/record-input/index",
+    "pages/growth-report/index"
   ],
   "window": {
     "navigationBarTitleText": "儿童成长小助手",
