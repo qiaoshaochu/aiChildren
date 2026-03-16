@@ -16,6 +16,13 @@ def create_child():
     return jsonify(_serialize_child(child)), 201
 
 
+@bp.route("", methods=["GET"])
+def list_children():
+    # MVP 阶段暂不鉴权
+    children = child_service.list_children()
+    return jsonify([_serialize_child(c) for c in children])
+
+
 @bp.route("/<int:child_id>", methods=["GET"])
 def get_child(child_id):
     # MVP 阶段暂不鉴权

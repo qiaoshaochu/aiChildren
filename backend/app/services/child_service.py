@@ -29,4 +29,8 @@ def get_child_by_id(child_id):
     return Child.query.get(child_id)
 
 
-__all__ = ["create_child", "get_child_by_id"]
+def list_children():
+    return Child.query.order_by(Child.created_at.desc()).all()
+
+
+__all__ = ["create_child", "get_child_by_id", "list_children"]
